@@ -10,9 +10,9 @@ while True:
         continue
     faces=face_cascade.detectMultiScale(gray_frame,1.3,5)
   
-    """ The first argument is the image, the second is the 
-    scalefactor (how much the image size will be reduced at each image scale), 
-    and the third is the minNeighbors (how many neighbors each rectangle should have)"""
+   # """ The first argument is the image, the second is the 
+    # scalefactor (how much the image size will be reduced at each image scale), 
+    # and the third is the minNeighbors (how many neighbors each rectangle should have)"""
     
     for(x,y,w,h) in faces:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,125,0),2)## color and width 
@@ -20,9 +20,9 @@ while True:
     cv2.imshow("video frame",frame)
     key_pressed =cv2.waitKey(1) & 0xFF
     
-    """cv2.waitKey() returns a 32 Bit integer value (might be dependent on the platform). 
-    The key input is in ASCII which is an 8 Bit integer value. So you only care
-    about these 8 bits and want all other bits to be 0. This you can achieve with:0xFF"""
+    # """cv2.waitKey() returns a 32 Bit integer value (might be dependent on the platform). 
+    # The key input is in ASCII which is an 8 Bit integer value. So you only care
+    # about these 8 bits and want all other bits to be 0. This you can achieve with:0xFF"""
     
     ### ord converts characters in unicode
     if key_pressed ==ord('n'):
