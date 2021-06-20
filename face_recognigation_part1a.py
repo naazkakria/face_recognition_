@@ -35,7 +35,9 @@ while True:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
         offset=10 
         ### making frame around face(taking gray scale to min matrix size )
-        face_section=gray_frame[y-offset:y+h+offset,x-offset:x+w+offset] 
+        face_section=frame[y-offset:y+h+offset,x-offset:x+w+offset] 
+        
+        
         face_section=cv2.resize(face_section,(100,100))
        
         ### save/ append at every 10th frame
