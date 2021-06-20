@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 
- ### knn algorithm 
+ ###   knn algorithm  #########
 def distance(v1,v2):
     return np.sqrt(((v1-v2)**2).sum())
 
@@ -32,17 +32,16 @@ dataset_path=r'C:/Users/HP/Desktop/data/'
 face_data=[]
 labels =[]
 class_id=0
-names={}
+names={} ##dict
 
-###########data preparation #########
 
+########### Data preparation #########
+## getting list of all the file
 for fx in os.listdir(dataset_path):
-    names[class_id]=fx[:-4]
     if fx.endswith('.npy'):
-
         print("loaded "+fx)
-
         data_item=np.load(dataset_path +fx)
+        names[class_id]=fx[:-4] ## removing .npy part
         face_data.append(data_item)
         
         ######### labels
@@ -50,7 +49,8 @@ for fx in os.listdir(dataset_path):
         target=class_id*np.ones((data_item.shape[0],))
         class_id +=1
         labels.append(target)
-        
+   
+   ##converting into 2D from #3D     
 face_dataset =np.concatenate(face_data,axis=0)
 face_labels=np.concatenate(labels,axis=0).reshape((-1,1))
 print(face_dataset.shape)
@@ -76,6 +76,8 @@ while True:
         
         
         face_section=frame[y-offset:y+h+offset,x-offset:x+w+offset]
+        
+        
         face_section=cv2.resize(face_section,(100,100))
         
         
